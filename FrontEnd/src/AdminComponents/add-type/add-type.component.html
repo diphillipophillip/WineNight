@@ -1,0 +1,52 @@
+<div class="card">
+  <div class="card-header">
+    Add Food Type
+  </div>
+  <div class="card-body">
+    <form [formGroup]="addTypeForm">
+      <div class="form-group">
+        <label>Category</label>
+        <select
+          class="form-control"
+          formControlName="category"
+          (change)="onChange()"
+          [(ngModel)]="selectedCategory"
+        >
+          <option></option>
+          <option *ngFor="let category of data | filter" [ngValue]="category">{{
+            category.name
+          }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Specialty</label>
+        <select class="form-control" formControlName="specialty">
+          <option></option>
+          <option *ngFor="let specialty of specialties">{{
+            specialty.name
+          }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Type</label>
+        <input
+          [attr.disabled]="disabled ? '' : null"
+          class="form-control"
+          placeholder="Please Add A Type"
+          formControlName="type"
+        />
+      </div>
+    </form>
+    <button
+      [disabled]="
+        addTypeForm.controls.category.errors ||
+        addTypeForm.controls.specialty.errors ||
+        addTypeForm.controls.type.errors
+      "
+      class="btn btn-outline-dark rounded-pill"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </div>
+</div>

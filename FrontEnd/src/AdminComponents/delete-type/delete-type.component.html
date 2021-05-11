@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-header">
+    Delete Food Type
+  </div>
+  <div class="card-body">
+    <div>
+      <form [formGroup]="deleteTypeForm">
+        <div class="form-group">
+          <label>Category</label>
+          <select
+            class="form-control"
+            formControlName="category"
+            [(ngModel)]="selectedCategory"
+            (change)="onChange()"
+          >
+            <option></option>
+            <option *ngFor="let category of data | filter" [ngValue]="category"
+              >{{ category.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Specialty</label>
+          <select class="form-control" formControlName="specialty">
+            <option> </option>
+            <option *ngFor="let specialty of specialties">
+              {{ specialty.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Type</label>
+          <input class="form-control" formControlName="type" />
+        </div>
+      </form>
+    </div>
+    <button
+      class="btn btn-outline-dark rounded-pill"
+      [disabled]="deleteTypeForm.controls.type.errors"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </div>
+</div>

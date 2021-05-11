@@ -1,0 +1,169 @@
+<aside
+  class="sidebar pos-absolute z-2"
+  data-role="sidebar"
+  data-toggle="#sidebar-toggle-4"
+  id="sb4"
+  data-shift=".shifted-content-2"
+  data-static-shift=".shifted-content-2"
+  data-static="md"
+>
+  <div class="sidebar-header">
+    <div class="avatar">
+      <img data-role="gravatar" data-email="sergey@pimenov.com.ua" />
+    </div>
+    <span class="title fg-white">Metro 4 Components Library</span>
+    <span class="subtitle fg-white"> 2018 © Sergey Pimenov</span>
+  </div>
+  <ul class="sidebar-menu">
+    <li class="group-title">Main</li>
+    <li>
+      <a (click)="onChange('Add')"
+        ><span class="mif-checkmark icon"></span>Add</a
+      >
+    </li>
+    <li>
+      <a (click)="onChange('Delete')"
+        ><span class="mif-minus icon"></span>Delete</a
+      >
+    </li>
+    <li>
+      <a (click)="onChange('Update')"
+        ><span class="mif-files-empty icon"></span>Update</a
+      >
+    </li>
+    <li class="divider"></li>
+    <li class="group-title">Settings</li>
+    <li>
+      <a (click)="toLogout()"><span class="mif-user icon"></span>Logout</a>
+    </li>
+  </ul>
+</aside>
+
+<div class="shifted-content-2 h-100 p-ab">
+  <div class="appbar pos-absolute bg-red z-1" data-role="appbar">
+    <button class="app-bar-item c-pointer" id="sidebar-toggle-4">
+      <span class="mif-menu fg-white"></span>
+    </button>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row" style="border: black 1px solid">
+      <div class="col" style=" height: 150px">
+        <h2>Hello Welcome Back!</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid bg-light" style=" height: 600px">
+    <div class="row d-flex justify-content-end" style="height: 600px">
+      <div
+        class="col-xl-6 col-lg-12 col-md-12 col-sm-12"
+        style=" margin-top:5%;"
+      >
+        <div class="row h-25">
+          <div
+            class="col-xl-5 offset-xl-1 col-lg-6 col-md-6 col-sm-6  text-center bg-white rounded"
+            style="border: 1px solid black; "
+          >
+            100 Categories!
+          </div>
+          <div
+            class="col-xl-5 offset-xl-1 col-lg-6 col-md-6 col-sm-6  text-center bg-white rounded"
+            style="border: 1px solid black;"
+          >
+            100 specialties
+          </div>
+        </div>
+        <div class="row h-50">
+          <div class="col-12">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" col-xl-6 col-lg-12 col-md-12 col-sm-12 bg-light "
+        style="margin-top:5%"
+      >
+        <div *ngIf="add && addToggle">
+          <button
+            class="btn btn-outline-dark form-control rounded-pill"
+            type="button"
+            (click)="addToggleButton()"
+          ></button>
+          <app-add-type></app-add-type>
+        </div>
+        <div *ngIf="add && !addToggle">
+          <button
+            class="btn btn-outline-dark form-control rounded-pill"
+            type="button"
+            (click)="addToggleButton()"
+          ></button>
+          <app-add-wine-type></app-add-wine-type>
+        </div>
+
+        <div *ngIf="update && updateToggle">
+          <button
+            (click)="updateToggleButton()"
+            class="btn btn-outline-dark form-control rounded-pill"
+            type="button"
+          ></button>
+          <app-update-type></app-update-type>
+        </div>
+        <div *ngIf="update && !updateToggle">
+          <button
+            class="btn btn-outline-dark form-control rounded-pill"
+            type="button"
+            (click)="updateToggleButton()"
+          ></button>
+          <app-update-wine-type></app-update-wine-type>
+        </div>
+
+        <div *ngIf="delete && deleteToggle">
+          <button
+            (click)="deleteToggleButton()"
+            class="btn btn-outline-dark form-control rounded-pill"
+            type="button"
+          ></button>
+          <app-delete-type></app-delete-type>
+        </div>
+        <div *ngIf="delete && !deleteToggle">
+          <button
+            class="btn btn-outline-dark form-control rounded-pill"
+            type="button"
+            (click)="deleteToggleButton()"
+          ></button>
+          <app-delete-wine-type></app-delete-wine-type>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

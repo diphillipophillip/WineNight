@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-header">
+    Add Wine Type
+  </div>
+  <div class="card-body">
+    <div>
+      <form [formGroup]="addWineTypeForm">
+        <div class="form-group">
+          <label>Category</label>
+          <select class="form-control" formControlName="category">
+            <option></option>
+            <option *ngFor="let wine of data">{{ wine.name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Type</label>
+          <input class="form-control" formControlName="type" />
+        </div>
+      </form>
+    </div>
+    <button
+      [disabled]="
+        addWineTypeForm.controls.category.errors ||
+        addWineTypeForm.controls.type.errors
+      "
+      class="btn btn-outline-dark rounded-pill"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </div>
+</div>

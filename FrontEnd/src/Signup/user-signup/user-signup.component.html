@@ -1,0 +1,91 @@
+<app-home-navbar></app-home-navbar>
+
+<div class="container-fluid" style="margin-top: 10%">
+  <div class="row d-flex justify-content-center">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          Signup
+        </div>
+        <div class="card-body">
+          <form [formGroup]="registerUserForm">
+            <div class="form-group">
+              <label>Email</label>
+              <input
+                class="form-control"
+                type="email"
+                formControlName="email"
+                [class.is-invalid]="
+                  registerUserForm.get('email').invalid &&
+                  registerUserForm.get('email').touched
+                "
+                [email]="emailValidation"
+              />
+              <small
+                class="text-danger"
+                *ngIf="registerUserForm.get('email').errors?.pattern"
+                >Email address is invalid</small
+              >
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input
+                class="form-control"
+                formControlName="password"
+                [class.is-invalid]="
+                  registerUserForm.get('password').invalid &&
+                  registerUserForm.get('password').touched
+                "
+              />
+              <small
+                *ngIf="registerUserForm.get('password').errors?.pattern"
+                class="text-danger"
+                >*Invalid Password</small
+              >
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <input
+                class="form-control"
+                formControlName="confirmPassword"
+                [class.is-invalid]="
+                  registerUserForm.get('confirmPassword').invalid &&
+                  registerUserForm.get('confirmPassword').touched
+                "
+              />
+              <div
+                *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid"
+              >
+                <small
+                  *ngIf="f.confirmPassword.errors.mustMatch"
+                  class="text-danger"
+                >
+                  *Must Match Password
+                </small>
+              </div>
+            </div>
+          </form>
+
+          <button
+            class="btn btn-outline-dark"
+            [disabled]="
+              registerUserForm.controls.email.errors ||
+              registerUserForm.controls.password.errors ||
+              registerUserForm.controls.confirmPassword.errors
+            "
+            (click)="onSubmit()"
+          >
+            Submit
+          </button>
+          <button
+            class="btn btn-outline-dark"
+            style="margin-left: 3%"
+            (click)="onBack()"
+          >
+            Back
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

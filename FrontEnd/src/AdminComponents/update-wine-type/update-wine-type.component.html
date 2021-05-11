@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header">
+    Update Wine Type
+  </div>
+  <div class="card-body">
+    <div>
+      <form [formGroup]="updateWineTypeForm">
+        <div class="form-group">
+          <label>Name of Wine Type</label>
+          <input class="form-control" formControlName="type" />
+        </div>
+        <div class="form-group">
+          <label>New Name for Wine Type</label>
+          <input class="form-control" formControlName="newName" />
+        </div>
+      </form>
+    </div>
+    <button class="btn btn-outline-dark rounded-pill" (click)="onSubmit()">
+      Submit
+    </button>
+  </div>
+</div>
