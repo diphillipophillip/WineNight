@@ -29,12 +29,6 @@ export class AdminService {
       .pipe(catchError(this.handleError));
   }
 
-  getSpecialties(): Observable<any> {
-    return this.http
-      .get('http://localhost:3000/specialty/getSpecialties')
-      .pipe(catchError(this.handleError));
-  }
-
   addType(body: any): Observable<any> {
     const options = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http
@@ -54,6 +48,15 @@ export class AdminService {
     const options = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http
       .post('http://localhost:3000/wine/addWineType', body, {
+        headers: options
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  getTypes(body: any): Observable<any> {
+    const options = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http
+      .post('http://localhost:3000/specialty/getTypes', body, {
         headers: options
       })
       .pipe(catchError(this.handleError));

@@ -3,6 +3,8 @@ var router = express.Router();
 var Category = require('../models/category');
 var Specialty = require('../models/specialty');
 
+var deepPopulate = require('mongoose-deep-populate');
+
 router.post('/addCategory', async function(req, res, next) {
   let category = await Category.findOne({ name: req.body.category });
   if (category) {
@@ -90,6 +92,10 @@ router.put('/clearSpecialty', async function(req, res, next) {
       res.status(200).send({ message: 'Cleared Success' });
     }
   }
+});
+
+router.post('/populate', async function(req, res, next) {
+  let category = await Category.findOne({ name: req.body.category });
 });
 
 module.exports = router;

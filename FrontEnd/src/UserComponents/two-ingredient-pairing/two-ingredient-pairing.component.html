@@ -30,16 +30,23 @@
             </div>
             <div class="form-group">
               <label>Specialty</label>
-              <select class="form-control">
+              <select
+                class="form-control"
+                formControlName="firstSpecialty"
+                (change)="onSpecialtyChange()"
+              >
                 <option></option>
-                <option *ngFor="let specialty of categorySpecialtyNames">{{
+                <option *ngFor="let specialty of specialties">{{
                   specialty.name
                 }}</option>
               </select>
             </div>
             <div class="form-group">
               <label>Type</label>
-              <input class="form-control" />
+              <select class="form-control">
+                <option></option>
+                <option *ngFor="let type of types">{{ type.name }}</option>
+              </select>
             </div>
           </div>
         </div>
@@ -51,20 +58,54 @@
           Second
         </div>
         <div class="card-body">
-          <div class="form-group">
-            <label>Category</label>
-            <input class="form-control" />
-          </div>
-          <div class="form-group">
-            <label>Specialty</label>
-            <input class="form-control" />
-          </div>
-          <div class="form-group">
-            <label>Type</label>
-            <input class="form-control" />
+          <div [formGroup]="twoIngredientFormSecond">
+            <div class="form-group">
+              <label>Category</label>
+              <select
+                (change)="onSecondCategoryChange()"
+                class="form-control"
+                formControlName="secondCategory"
+                [(ngModel)]="secondSelectedCategory"
+              >
+                <option></option>
+                <option
+                  *ngFor="let category of categories | filter"
+                  [ngValue]="category"
+                  >{{ category.name }}</option
+                >
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Specialty</label>
+              <select
+                class="form-control"
+                formControlName="secondSpecialty"
+                (change)="onSecondSpecialtyChange()"
+              >
+                <option></option>
+                <option *ngFor="let specialty of secondSpecialties">{{
+                  specialty.name
+                }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Type</label>
+              <select class="form-control" formControlName="secondType">
+                <option></option>
+                <option *ngFor="let type of secondTypes">{{
+                  type.name
+                }}</option>
+              </select>
+            </div>
           </div>
 
-          <button class="btn btn-outline-dark" style="margin-left:30px">
+          <button
+            class="btn btn-outline-dark"
+            style="margin-left:30px"
+            [disabled]="
+              !twoIngredientForm.valid && !twoIngredientFormSecond.valid
+            "
+          >
             Submit
           </button>
         </div>

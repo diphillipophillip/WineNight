@@ -28,6 +28,13 @@ router.delete('/deleteSpecialty', async function(req, res, next) {
   });
 });
 
+router.get('/findSpecialtyTypes', async function(req, res, next) {
+  let specialty = await Specialty.findOne({
+    name: req.body.specialty
+  }).populate('types');
+  res.send(specialty);
+});
+
 router.put('/updateSpecialty', async function(req, res, next) {
   let specialty = await Specialty.findOne({
     name: req.body.specialty
@@ -39,6 +46,14 @@ router.put('/updateSpecialty', async function(req, res, next) {
   } else {
     res.status(501).json({ message: 'Specialty Does Not Exist' });
   }
+});
+
+router.post('/getTypes', async function(req, res, next) {
+  console.log('hello');
+  let specialty = await Specialty.findOne({
+    name: req.body.specialty
+  }).populate('types');
+  res.send(specialty);
 });
 
 router.post('/addType', async function(req, res, next) {
@@ -66,16 +81,6 @@ router.put('/clearTypes', async function(req, res, next) {
     }
   );
 });
-
-router.get('/getSpecialties', async function(req, res, next) {
-  return Specialty.find()
-    .populate('types')
-    .exec((err, types) => {
-      res.send(types);
-    });
-});
-
-/*jhgfhgfh*/
 
 router.put('/clearType', async function(req, res, next) {
   let type = await Type.findOne({ name: req.body.type });
