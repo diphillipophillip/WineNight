@@ -8,17 +8,49 @@
     <div class="carousel-item active">
       <div class="card">
         <div class="card-header">
-          First Ingredient
+          Preparation Choice
         </div>
         <div class="card-body">
-          <div [formGroup]="twoIngredientForm">
+          <div>
             <div class="form-group">
               <label>Category</label>
               <select
                 class="form-control"
-                (change)="onCategoryChange()"
+                (change)="onPrepChange()"
+                [(ngModel)]="selectedPrep"
+              >
+                <option></option>
+                <option
+                  *ngFor="let category of categories | filterPrep"
+                  [ngValue]="category"
+                  >{{ category.name }}</option
+                >
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Type</label>
+              <select class="form-control">
+                <option></option>
+                <option *ngFor="let type of prepTypes">{{ type.name }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="card">
+        <div class="card-header">
+          Ingredient
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="form-group">
+              <label>Category</label>
+              <select
+                class="form-control"
+                (change)="onSecondCategoryChange()"
                 [(ngModel)]="selectedCategory"
-                formControlName="firstCategory"
               >
                 <option></option>
                 <option
@@ -32,13 +64,15 @@
               <label>Specialty</label>
               <select
                 class="form-control"
-                formControlName="firstSpecialty"
-                (change)="onSpecialtyChange()"
+                (change)="onSecondSpecialtyChange()"
+                [(ngModel)]="selectedSpecialty"
               >
                 <option></option>
-                <option *ngFor="let specialty of specialties">{{
-                  specialty.name
-                }}</option>
+                <option
+                  *ngFor="let specialty of specialties"
+                  [ngValue]="specialty"
+                  >{{ specialty.name }}</option
+                >
               </select>
             </div>
             <div class="form-group">
@@ -49,63 +83,8 @@
               </select>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="card">
-        <div class="card-header">
-          Second Ingredient
-        </div>
-        <div class="card-body">
-          <div [formGroup]="twoIngredientFormSecond">
-            <div class="form-group">
-              <label>Category</label>
-              <select
-                (change)="onSecondCategoryChange()"
-                class="form-control"
-                formControlName="secondCategory"
-                [(ngModel)]="secondSelectedCategory"
-              >
-                <option></option>
-                <option
-                  *ngFor="let category of categories | filter"
-                  [ngValue]="category"
-                  >{{ category.name }}</option
-                >
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Specialty</label>
-              <select
-                class="form-control"
-                formControlName="secondSpecialty"
-                (change)="onSecondSpecialtyChange()"
-              >
-                <option></option>
-                <option *ngFor="let specialty of secondSpecialties">{{
-                  specialty.name
-                }}</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Type</label>
-              <select class="form-control" formControlName="secondType">
-                <option></option>
-                <option *ngFor="let type of secondTypes">{{
-                  type.name
-                }}</option>
-              </select>
-            </div>
-          </div>
 
-          <button
-            class="btn btn-outline-dark"
-            style="margin-left:30px"
-            [disabled]="
-              !twoIngredientForm.valid && !twoIngredientFormSecond.valid
-            "
-          >
+          <button class="btn btn-outline-dark" style="margin-left:30px">
             Submit
           </button>
         </div>

@@ -17,13 +17,17 @@
   <ul class="sidebar-menu">
     <li class="group-title">Main</li>
     <li>
-      <a><span class="mif-spoon-fork icon"> </span>Two Ingredient Pairing</a>
+      <a (click)="changeOption('twoIngredientPairing')"
+        ><span class="mif-spoon-fork icon"> </span>Two Ingredient Pairing</a
+      >
     </li>
     <li>
-      <a><span class="mif-restaurant icon"></span>Ingredient + Prep Pairing</a>
+      <a (click)="changeOption('ingredientAndPrep')"
+        ><span class="mif-restaurant icon"></span>Ingredient + Prep Pairing</a
+      >
     </li>
     <li>
-      <a
+      <a (click)="changeOption('multiIngredientPairing')"
         ><span class="mif-shopping-basket icon"></span>Multi Ingredient
         Pairing</a
       >
@@ -50,8 +54,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-6">
+      <div *ngIf="twoIngredientPairing" class="col-6">
         <app-two-ingredient-pairing></app-two-ingredient-pairing>
+      </div>
+      <div *ngIf="ingredientAndPrep" class="col-6">
+        <app-ingredient-and-prep></app-ingredient-and-prep>
+      </div>
+      <div *ngIf="multiIngredientPairing" class="col-6">
+        <app-multi-ingredient-pairing></app-multi-ingredient-pairing>
       </div>
     </div>
   </div>

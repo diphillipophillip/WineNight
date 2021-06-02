@@ -7,6 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent implements OnInit {
+  twoIngredientPairing = true;
+  ingredientAndPrep = false;
+  multiIngredientPairing = false;
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -22,5 +26,25 @@ export class UserDashboardComponent implements OnInit {
     localStorage.removeItem('userToken');
     localStorage.removeItem('email');
     this.router.navigate(['home']);
+  }
+
+  changeOption(option: String) {
+    switch (option) {
+      case 'twoIngredientPairing':
+        this.twoIngredientPairing = true;
+        this.ingredientAndPrep = false;
+        this.multiIngredientPairing = false;
+        break;
+      case 'ingredientAndPrep':
+        this.twoIngredientPairing = false;
+        this.ingredientAndPrep = true;
+        this.multiIngredientPairing = false;
+        break;
+      case 'multiIngredientPairing':
+        this.twoIngredientPairing = false;
+        this.ingredientAndPrep = false;
+        this.multiIngredientPairing = true;
+        break;
+    }
   }
 }

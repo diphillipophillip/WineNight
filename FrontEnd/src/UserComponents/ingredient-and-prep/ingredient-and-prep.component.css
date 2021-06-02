@@ -1,0 +1,9 @@
+.carousel-control-next-icon:after {
+  content: '>';
+  color: red;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  color: red;
+}
