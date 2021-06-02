@@ -8,29 +8,45 @@
     <div class="carousel-item active">
       <div class="card">
         <div class="card-header">
-          First Choice
+          First Ingredient
         </div>
         <div class="card-body">
           <div>
             <div class="form-group">
               <label>Category</label>
-              <select class="form-control">
+              <select
+                class="form-control"
+                (change)="onFirstCategoryChange()"
+                [(ngModel)]="firstCategoryChoice"
+              >
                 <option></option>
-                <option></option>
+                <option
+                  *ngFor="let category of categories | filter"
+                  [ngValue]="category"
+                  >{{ category.name }}</option
+                >
               </select>
             </div>
             <div class="form-group">
               <label>Specialty</label>
-              <select class="form-control">
+              <select
+                class="form-control"
+                (change)="onFirstSpecialtyChange()"
+                [(ngModel)]="firstSpecialtyChoice"
+              >
                 <option></option>
-                <option></option>
+                <option
+                  *ngFor="let specialty of firstSpecialties"
+                  [ngValue]="specialty"
+                  >{{ specialty.name }}</option
+                >
               </select>
             </div>
             <div class="form-group">
               <label>Type</label>
               <select class="form-control">
                 <option></option>
-                <option></option>
+                <option *ngFor="let type of firstTypes">{{ type.name }}</option>
               </select>
             </div>
           </div>
@@ -40,29 +56,47 @@
     <div class="carousel-item">
       <div class="card">
         <div class="card-header">
-          Second Choice
+          Second Ingredient
         </div>
         <div class="card-body">
           <div>
             <div class="form-group">
               <label>Category</label>
-              <select class="form-control">
+              <select
+                class="form-control"
+                (change)="onSecondCategoryChange()"
+                [(ngModel)]="secondCategoryChoice"
+              >
                 <option></option>
-                <option></option>
+                <option
+                  *ngFor="let category of categories | filter"
+                  [ngValue]="category"
+                  >{{ category.name }}</option
+                >
               </select>
             </div>
             <div class="form-group">
               <label>Specialty</label>
-              <select formControlName="secondSpecialty">
+              <select
+                class="form-control"
+                (change)="onSecondSpecialtyChange()"
+                [(ngModel)]="secondSpecialtyChoice"
+              >
                 <option></option>
-                <option></option>
+                <option
+                  *ngFor="let specialty of secondSpecialties"
+                  [ngValue]="specialty"
+                  >{{ specialty.name }}</option
+                >
               </select>
             </div>
             <div class="form-group">
               <label>Type</label>
-              <select>
+              <select class="form-control">
                 <option></option>
-                <option></option>
+                <option *ngFor="let type of secondTypes">{{
+                  type.name
+                }}</option>
               </select>
             </div>
           </div>
@@ -72,29 +106,45 @@
     <div class="carousel-item">
       <div class="card">
         <div class="card-header">
-          Third
+          Third Ingredient
         </div>
         <div class="card-body">
           <div class="form">
             <div class="form-group">
               <label>Category</label>
-              <select>
+              <select
+                class="form-control"
+                (change)="onThirdCategoryChange()"
+                [(ngModel)]="thirdCategoryChoice"
+              >
                 <option></option>
-                <option></option>
+                <option
+                  *ngFor="let category of categories"
+                  [ngValue]="category"
+                  >{{ category.name }}</option
+                >
               </select>
             </div>
             <div class="form-group">
               <label>Specialty</label>
-              <select>
+              <select
+                class="form-control"
+                (change)="onThirdSpecialtyChange()"
+                [(ngModel)]="thirdSpecialtyChoice"
+              >
                 <option></option>
-                <option></option>
+                <option
+                  *ngFor="let specialty of thirdSpecialties"
+                  [ngValue]="specialty"
+                  >{{ specialty.name }}</option
+                >
               </select>
             </div>
             <div class="form-group">
               <label>Type</label>
-              <select>
+              <select class="form-control">
                 <option></option>
-                <option></option>
+                <option *ngFor="let type of thirdTypes">{{ type.name }}</option>
               </select>
             </div>
           </div>
