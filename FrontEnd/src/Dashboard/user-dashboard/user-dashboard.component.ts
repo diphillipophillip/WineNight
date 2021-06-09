@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import data from 'src/data.js';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -46,5 +47,9 @@ export class UserDashboardComponent implements OnInit {
         this.multiIngredientPairing = true;
         break;
     }
+  }
+
+  wineValues(wines: any[]) {
+    console.log(wines);
   }
 }

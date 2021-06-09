@@ -55,13 +55,19 @@
     </div>
     <div class="row">
       <div *ngIf="twoIngredientPairing" class="col-6">
-        <app-two-ingredient-pairing></app-two-ingredient-pairing>
+        <app-two-ingredient-pairing
+          (wineValues)="wineValues($event)"
+        ></app-two-ingredient-pairing>
       </div>
       <div *ngIf="ingredientAndPrep" class="col-6">
-        <app-ingredient-and-prep></app-ingredient-and-prep>
+        <app-ingredient-and-prep
+          (wineValues)="wineValues($event)"
+        ></app-ingredient-and-prep>
       </div>
       <div *ngIf="multiIngredientPairing" class="col-6">
-        <app-multi-ingredient-pairing></app-multi-ingredient-pairing>
+        <app-multi-ingredient-pairing
+          (wineValues)="wineValues($event)"
+        ></app-multi-ingredient-pairing>
       </div>
     </div>
   </div>

@@ -1,7 +1,14 @@
-import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  SystemJsNgModuleLoader,
+  Output
+} from '@angular/core';
 import { UserService } from 'src/Services/user.service';
 import { AdminService } from 'src/Services/admin.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import data from 'src/data.js';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-two-ingredient-pairing',
@@ -23,6 +30,12 @@ export class TwoIngredientPairingComponent implements OnInit {
 
   secondSelectedCategory; /*ngModel Binding for second Category */
   twoIngredientFormSecond: FormGroup;
+
+  @Output() wineValues = new EventEmitter<any[]>();
+
+  sendWineValues(wines: any) {
+    this.wineValues.emit(wines);
+  }
 
   ngOnInit(): void {
     this.service.getCategories().subscribe(data => {
@@ -74,5 +87,32 @@ export class TwoIngredientPairingComponent implements OnInit {
     if (specialty === '') {
       this.secondTypes = [];
     }
+  }
+
+  onSubmit() {
+    let firstCategory = this.twoIngredientForm.get('firstCategory').value.name;
+    let firstSpecialty = this.twoIngredientForm.get('firstSpecialty').value;
+
+    let secondCategory = this.twoIngredientFormSecond.get('secondCategory')
+      .value.name;
+
+    let secondSpecialty = this.twoIngredientFormSecond.get('secondSpecialty')
+      .value;
+
+    let values = [];
+
+    data[firstCategory].forEach(e => {
+      if (e[firstSpecialty] !== undefined) {
+        values.push(e[firstSpecialty]);
+      }
+    });
+
+    data[secondCategory].forEach(e => {
+      if (e[secondSpecialty] !== undefined) {
+        values.push(e[secondSpecialty]);
+      }
+    });
+
+    this.sendWineValues(values);
   }
 }

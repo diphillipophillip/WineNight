@@ -11,13 +11,14 @@
           First Ingredient
         </div>
         <div class="card-body">
-          <div>
+          <div [formGroup]="firstIngredientForm">
             <div class="form-group">
               <label>Category</label>
               <select
                 class="form-control"
                 (change)="onFirstCategoryChange()"
                 [(ngModel)]="firstCategoryChoice"
+                formControlName="category"
               >
                 <option></option>
                 <option
@@ -33,6 +34,7 @@
                 class="form-control"
                 (change)="onFirstSpecialtyChange()"
                 [(ngModel)]="firstSpecialtyChoice"
+                formControlName="specialty"
               >
                 <option></option>
                 <option
@@ -44,7 +46,7 @@
             </div>
             <div class="form-group">
               <label>Type</label>
-              <select class="form-control">
+              <select class="form-control" formControlName="type">
                 <option></option>
                 <option *ngFor="let type of firstTypes">{{ type.name }}</option>
               </select>
@@ -59,13 +61,14 @@
           Second Ingredient
         </div>
         <div class="card-body">
-          <div>
+          <div [formGroup]="secondIngredientForm">
             <div class="form-group">
               <label>Category</label>
               <select
                 class="form-control"
                 (change)="onSecondCategoryChange()"
                 [(ngModel)]="secondCategoryChoice"
+                formControlName="category"
               >
                 <option></option>
                 <option
@@ -81,6 +84,7 @@
                 class="form-control"
                 (change)="onSecondSpecialtyChange()"
                 [(ngModel)]="secondSpecialtyChoice"
+                formControlName="specialty"
               >
                 <option></option>
                 <option
@@ -92,7 +96,7 @@
             </div>
             <div class="form-group">
               <label>Type</label>
-              <select class="form-control">
+              <select class="form-control" formControlName="type">
                 <option></option>
                 <option *ngFor="let type of secondTypes">{{
                   type.name
@@ -109,17 +113,18 @@
           Third Ingredient
         </div>
         <div class="card-body">
-          <div class="form">
+          <div [formGroup]="thirdIngredientForm">
             <div class="form-group">
               <label>Category</label>
               <select
                 class="form-control"
                 (change)="onThirdCategoryChange()"
                 [(ngModel)]="thirdCategoryChoice"
+                formControlName="category"
               >
                 <option></option>
                 <option
-                  *ngFor="let category of categories"
+                  *ngFor="let category of categories | filter"
                   [ngValue]="category"
                   >{{ category.name }}</option
                 >
@@ -131,6 +136,7 @@
                 class="form-control"
                 (change)="onThirdSpecialtyChange()"
                 [(ngModel)]="thirdSpecialtyChoice"
+                formControlName="specialty"
               >
                 <option></option>
                 <option
@@ -142,11 +148,18 @@
             </div>
             <div class="form-group">
               <label>Type</label>
-              <select class="form-control">
+              <select class="form-control" formControlName="type">
                 <option></option>
                 <option *ngFor="let type of thirdTypes">{{ type.name }}</option>
               </select>
             </div>
+            <button
+              class="btn btn-outline-dark"
+              style="margin-left: 30px"
+              (click)="onSubmit()"
+            >
+              Submit
+            </button>
           </div>
         </div>
       </div>
