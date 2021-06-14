@@ -14,6 +14,18 @@ export class UserDashboardComponent implements OnInit {
 
   constructor(private router: Router) {}
 
+  wineScore = {
+    'Bold Red': 0,
+    'Medium Red': 0,
+    'Light Red': 0,
+    Rose: 0,
+    'Rich White': 0,
+    'Light White': 0,
+    Sparkling: 0,
+    'Sweet White': 0,
+    Dessert: 0
+  };
+
   ngOnInit(): void {
     if (localStorage.getItem('adminToken') !== null) {
       this.router.navigate(['admin-dashboard']);
@@ -50,6 +62,15 @@ export class UserDashboardComponent implements OnInit {
   }
 
   wineValues(wines: any[]) {
-    console.log(wines);
+    let concatWines = [];
+    wines.forEach(e => {
+      e.forEach(i => {
+        concatWines.push(i);
+      });
+    });
+    concatWines.forEach(e => {
+      this.wineScore[e] += 1;
+    });
+    console.log(this.wineScore);
   }
 }

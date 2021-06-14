@@ -6,13 +6,14 @@
   data-shift=".shifted-content-2"
   data-static-shift=".shifted-content-2"
   data-static="md"
+  style="background-color : #d58d78"
 >
-  <div class="sidebar-header">
+  <div class="sidebar-header" style="background-color: #d58d78">
     <div class="avatar">
-      <img data-role="gravatar" data-email="sergey@pimenov.com.ua" />
+      <img src="../../assets/WineGif.gif" />
     </div>
-    <span class="title fg-white">Metro 4 Components Library</span>
-    <span class="subtitle fg-white"> 2018 © Sergey Pimenov</span>
+    <span class="title fg-white">Wine Night</span>
+    <span class="subtitle fg-white"> Find The perfect Match</span>
   </div>
   <ul class="sidebar-menu">
     <li class="group-title">Main</li>
@@ -41,16 +42,40 @@
 </aside>
 
 <div class="shifted-content-2 h-100 p-ab">
-  <div class="appbar pos-absolute bg-primary z-1" data-role="appbar">
+  <div
+    class="appbar pos-absolute z-1"
+    data-role="appbar"
+    style="background-color: black"
+  >
     <button class="app-bar-item c-pointer" id="sidebar-toggle-4">
       <span class="mif-menu fg-white"></span>
     </button>
   </div>
 
   <div class="container-fluid">
-    <div class="row" style="border: black 1px solid">
-      <div class="col" style=" height: 150px">
-        <h2>Hello Welcome Back!</h2>
+    <div class="row">
+      <div class="col" style="height: 106px;">
+        <div
+          id="carouselExampleSlidesOnly"
+          class="carousel slide"
+          data-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active ">
+              <img
+                class="d-block w-100"
+                src="../../assets/wine.jpeg"
+                alt="First slide"
+              />
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="..." alt="Second slide" />
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="..." alt="Third slide" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -68,6 +93,11 @@
         <app-multi-ingredient-pairing
           (wineValues)="wineValues($event)"
         ></app-multi-ingredient-pairing>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body"></div>
+        </div>
       </div>
     </div>
   </div>
